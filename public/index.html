@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYC Pulse — what the city is searching</title>
+  <meta name="description" content="A weekly generative art piece from NYC's top rising Google searches." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sky:    #07070f;
+      --surface:#0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --text:   #e8e6f0;
+      --muted:  #6a6880;
+      --sans:   system-ui, -apple-system, sans-serif;
+      --serif:  Georgia, "Times New Roman", serif;
+    }
+    html { background: var(--sky); color: var(--text); font-family: var(--sans); }
+    body { max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 0 24px; border-bottom: 0.5px solid var(--border); margin-bottom: 32px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: var(--text); text-decoration: none; }
+    .logo-dot { width: 6px; height: 6px; border-radius: 1px; background: #FF2D78; animation: blink 3s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .nav-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Issue meta only — no mood name */
+    .issue-meta { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+
+    /* Co-search note ABOVE canvas */
+    .cosearch-note {
+      font-size: 11px; color: var(--muted); font-style: italic;
+      margin-bottom: 14px; line-height: 1.5;
+    }
+
+    #p5-canvas { width:100%; border-radius:10px; overflow:hidden; background:var(--sky); border:0.5px solid var(--border); }
+    #p5-canvas canvas { display:block; width:100% !important; height:auto !important; }
+
+    .controls { display:flex; justify-content:flex-end; padding:10px 0 4px; }
+    .btn { font-size:11px; color:var(--muted); background:var(--surface); border:0.5px solid var(--border); border-radius:5px; padding:5px 12px; cursor:pointer; }
+    .btn:hover { color:var(--text); }
+
+    /* Legend row — velocity colors + ghost toggle */
+    #legend {
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+      padding:12px 0; border-top:0.5px solid var(--border);
+    }
+    .li { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
+    .ld { width:6px; height:6px; border-radius:1px; flex-shrink:0; }
+
+    #ghost-toggle {
+      margin-left:auto; font-size:11px; color:var(--muted);
+      background:none; border:0.5px solid var(--border);
+      border-radius:4px; padding:4px 10px; cursor:pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    #ghost-toggle:hover { color:var(--text); border-color:rgba(255,255,255,0.2); }
+    #ghost-toggle.active { color:#9B5DE5; border-color:#9B5DE5; }
+
+    footer { margin-top:48px; padding-top:20px; border-top:0.5px solid var(--border); font-size:11px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    footer a { color:var(--muted); text-decoration:none; }
+    footer a:hover { color:var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="/"><span class="logo-dot"></span>NYC Pulse</a>
+    <div class="nav-links">
+      <a href="https://devya.me" target="_blank">About</a>
+    </div>
+  </nav>
+
+  <div class="issue-meta" id="issue-meta">Loading…</div>
+
+  <p class="cosearch-note">
+    Lines connect searches made in the same session. The thickness of a line indicates
+    how frequently those searches occurred together.
+  </p>
+
+  <div id="p5-canvas"></div>
+
+  <div class="controls">
+    <button class="btn" id="export-btn">Save as image</button>
+  </div>
+
+  <div id="legend"></div>
+
+  <footer>
+    <span>Keywords sourced from Google Trends · NYC metro · updated every Monday</span>
+    <span><a href="https://devya.me" target="_blank">devya.me</a></span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.min.js"></script>
+  <script src="/sketch.js"></script>
+</body>
+</html>
