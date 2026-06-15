@@ -1,32 +1,32 @@
 """
 NYC Pulse — fetch script v10
 Fully dynamic. Zero hardcoded keywords. Zero external feeds.
-
+ 
 Discovery pipeline:
 1. suggestions() with NYC-flavored prefixes → what people are typing right now
 2. related_queries() on top suggestions → what they search alongside
 3. interest_over_time() scored against NY state → real volume data
 4. interest_by_region() for top stars → which borough searches it most
 5. Fallback: yesterday's data.json if all else fails
-
+ 
 trending_searches() is dead (404). This approach is more reliable.
 """
-
+ 
 import json
 import time
 import random
 import datetime
 import os
 from pytrends.request import TrendReq
-
+ 
 NYC_GEO   = "US-NY"      # NY state — better coverage than DMA
 NYC_DMA   = "US-NY-501"  # DMA — used only for borough data
 TIMEFRAME_NOW  = "now 1-d"
 TIMEFRAME_PREV = "now 7-d"
-
+ 
 OUTPUT_DATA    = os.path.join(os.path.dirname(__file__), "../public/data.json")
 OUTPUT_ARCHIVE = os.path.join(os.path.dirname(__file__), "../public/archive/issues.json")
-
+ 
 # ── Blocklist ─────────────────────────────────────────────────────────────────
 BLOCKLIST = [
     "shooting", "murder", "shot", "stabbing", "killed", "killing", "dead",
@@ -38,11 +38,11 @@ BLOCKLIST = [
     "porn", "xxx", "nude", "naked", "sex tape", "onlyfans",
     "suicide", "self harm", "eating disorder", "scandal", "impeach",
 ]
-
+ 
 def is_safe(kw):
     kw = kw.lower()
     return not any(b in kw for b in BLOCKLIST)
-
+ 
 # ── Velocity colors ───────────────────────────────────────────────────────────
 VELOCITY_COLORS = {
     "rocketing": "#FF2D78",
@@ -52,7 +52,7 @@ VELOCITY_COLORS = {
     "fading":    "#4A4A6A",
     "ghost":     "#2A2A3A",
 }
-
+ 
 BOROUGH_MAP = {
     "New York":   "Manhattan",
     "Kings":      "Brooklyn",
@@ -60,25 +60,25 @@ BOROUGH_MAP = {
     "Bronx":      "The Bronx",
     "Richmond":   "Staten Island",
 }
-
+ 
 def velocity_to_tier(v):
     if v >= 2.0:  return "rocketing"
     if v >= 1.3:  return "surging"
     if v >= 0.8:  return "steady"
     if v >= 0.4:  return "slowing"
     return "fading"
-
+ 
 def polite_sleep():
     time.sleep(random.uniform(25, 40))
-
+ 
 def random_pos(margin=0.05):
     return {
         "x": round(random.uniform(margin, 1-margin), 3),
         "y": round(random.uniform(margin, 1-margin), 3),
     }
-
+ 
 # ── Retry wrapper ─────────────────────────────────────────────────────────────
-
+ 
 def with_retry(fn, label="call", retries=3, base_delay=90):
     """
     Call fn(). On 429, wait with exponential backoff and retry.
@@ -100,9 +100,9 @@ def with_retry(fn, label="call", retries=3, base_delay=90):
                     return None
             else:
                 raise
-
+ 
 # ── Step 1: Discover keywords via suggestions() ───────────────────────────────
-
+ 
 # Prefixes that surface what NYC is actually searching right now.
 PREFIXES = [
     # single letters — catches anything trending
@@ -116,11 +116,11 @@ PREFIXES = [
     "brooklyn", "manhattan", "queens", "bronx",
     "near me", "this weekend", "tonight",
 ]
-
+ 
 def fetch_via_suggestions():
     pytrends = TrendReq(hl="en-US", tz=300)
     discovered = {}
-
+ 
     print(f"  Querying {len(PREFIXES)} prefixes via suggestions()...")
     for prefix in PREFIXES:
         try:
@@ -133,13 +133,13 @@ def fetch_via_suggestions():
             time.sleep(random.uniform(3, 6))
         except Exception:
             pass
-
+ 
     ranked = sorted(discovered.items(), key=lambda x: x[1], reverse=True)
     keywords = [kw for kw, _ in ranked[:60]]
     print(f"  → {len(keywords)} keywords discovered via suggestions")
     return keywords
-
-
+ 
+ 
 def fetch_from_yesterday():
     try:
         with open(OUTPUT_DATA) as f:
@@ -151,22 +151,22 @@ def fetch_from_yesterday():
     except Exception as e:
         print(f"  No previous data: {e}")
         return []
-
+ 
 # ── Step 2: Expand via related_queries() ─────────────────────────────────────
-
+ 
 def expand_with_related(keywords, geo, timeframe):
     seen = set(k.lower() for k in keywords)
     expanded = list(keywords)
-
+ 
     print(f"  Expanding top {min(len(keywords), 25)} via related_queries()...")
     for i in range(0, min(len(keywords), 25), 5):
         batch = keywords[i:i+5]
-
+ 
         def do_related(batch=batch):
             pt = TrendReq(hl="en-US", tz=300)
             pt.build_payload(batch, geo=geo, timeframe=timeframe)
             return pt.related_queries()
-
+ 
         rq = with_retry(do_related, label=f"related batch {i//5+1}")
         if rq:
             for kw in batch:
@@ -178,22 +178,22 @@ def expand_with_related(keywords, geo, timeframe):
                                 seen.add(term)
                                 expanded.append(term)
         polite_sleep()
-
+ 
     print(f"  → {len(expanded)} total after expansion")
     return expanded
-
+ 
 # ── Step 3: Score all keywords ────────────────────────────────────────────────
-
+ 
 def fetch_scores(keywords, geo, timeframe):
     scores = {}
     for i in range(0, len(keywords), 5):
         batch = keywords[i:i+5]
-
+ 
         def do_scores(batch=batch):
             pt = TrendReq(hl="en-US", tz=300)
             pt.build_payload(batch, geo=geo, timeframe=timeframe)
             return pt.interest_over_time()
-
+ 
         df = with_retry(do_scores, label=f"scores batch {i//5+1}")
         if df is not None and not df.empty:
             for kw in batch:
@@ -203,16 +203,16 @@ def fetch_scores(keywords, geo, timeframe):
                 scores[kw] = 0
         polite_sleep()
     return scores
-
+ 
 # ── Step 4: Borough data ──────────────────────────────────────────────────────
-
+ 
 def fetch_borough(keyword, timeframe):
     try:
         def do_borough():
             pt = TrendReq(hl="en-US", tz=300)
             pt.build_payload([keyword], geo=NYC_DMA, timeframe=timeframe)
             return pt.interest_by_region(resolution="CITY", inc_low_vol=True)
-
+ 
         df = with_retry(do_borough, label=f"borough:{keyword}")
         if df is None or df.empty:
             return None
@@ -225,32 +225,32 @@ def fetch_borough(keyword, timeframe):
         return None
     finally:
         polite_sleep()
-
+ 
 # ── Build stars ───────────────────────────────────────────────────────────────
-
+ 
 def build_stars():
     random.seed(datetime.date.today().toordinal())
-
+ 
     print("\n  Step 1: Discovering keywords via Google suggestions...")
     keywords = fetch_via_suggestions()
-
+ 
     if not keywords:
         print("  Suggestions failed — using yesterday's data as fallback")
         keywords = fetch_from_yesterday()
-
+ 
     if not keywords:
         print("  ERROR: No keywords available")
         return [], []
-
+ 
     print("\n  Step 2: Expanding with related queries...")
     keywords = expand_with_related(keywords, NYC_GEO, TIMEFRAME_NOW)
-
+ 
     # Cap before scoring — fewer batches = fewer 429s
     keywords = keywords[:50]
     print(f"\n  Step 3: Scoring {len(keywords)} keywords against NY state...")
     scores_now  = fetch_scores(keywords, NYC_GEO, TIMEFRAME_NOW)
     scores_prev = fetch_scores(keywords, NYC_GEO, TIMEFRAME_PREV)
-
+ 
     active, ghost = [], []
     for kw in keywords:
         now  = scores_now.get(kw, 0)
@@ -258,7 +258,7 @@ def build_stars():
         vel  = now / prev
         tier = velocity_to_tier(vel)
         pos  = random_pos()
-
+ 
         entry = {
             "word":     kw,
             "score":    now,
@@ -269,7 +269,7 @@ def build_stars():
             "x":        pos["x"],
             "y":        pos["y"],
         }
-
+ 
         if now >= 8:
             active.append(entry)
         else:
@@ -277,45 +277,45 @@ def build_stars():
             entry["color"] = VELOCITY_COLORS["ghost"]
             entry["sz"]    = round(random.uniform(4, 6), 1)
             ghost.append(entry)
-
+ 
     active.sort(key=lambda s: s["score"], reverse=True)
     active = active[:50]
     ghost  = ghost[:80]
-
+ 
     print(f"\n  Step 4: Fetching borough data for top 20 stars...")
     for star in active[:20]:
         b = fetch_borough(star["word"], TIMEFRAME_NOW)
         star["borough"] = b
         if b: print(f"    {star['word']} → {b}")
-
+ 
     print(f"\n  → {len(active)} active · {len(ghost)} ghost")
     return active, ghost
-
+ 
 # ── Build edges ───────────────────────────────────────────────────────────────
-
+ 
 def build_edges(stars, ghost_stars):
     print("\n  Step 5: Building co-search edges...")
     all_stars = stars + ghost_stars
     n_active  = len(stars)
-
+ 
     word_to_idx = {}
     for i, star in enumerate(all_stars):
         word_to_idx[star["word"].lower()] = i
         for word in star["word"].lower().split():
             if len(word) > 4:
                 word_to_idx.setdefault(word, i)
-
+ 
     related_map = {}
     all_kws = [s["word"] for s in all_stars]
-
+ 
     for i in range(0, len(all_kws), 5):
         batch = all_kws[i:i+5]
-
+ 
         def do_edges(batch=batch):
             pt = TrendReq(hl="en-US", tz=300)
             pt.build_payload(batch, geo=NYC_GEO, timeframe=TIMEFRAME_NOW)
             return pt.related_queries()
-
+ 
         data = with_retry(do_edges, label=f"edges batch {i//5+1}")
         if data:
             for kw in batch:
@@ -328,10 +328,10 @@ def build_edges(stars, ghost_stars):
             for kw in batch:
                 related_map[kw] = []
         polite_sleep()
-
+ 
     active_edges, ghost_edges = [], []
     seen = set()
-
+ 
     for i, star in enumerate(all_stars):
         is_ghost_i = i >= n_active
         for rq in related_map.get(star["word"], []):
@@ -355,7 +355,7 @@ def build_edges(stars, ghost_stars):
                             "a_ghost": is_ghost_i,
                             "b_ghost": is_ghost_j,
                         })
-
+ 
     # Fallback: connect isolated stars to nearest by score
     connected = set(i for e in active_edges for i in e)
     for i in range(n_active):
@@ -367,16 +367,16 @@ def build_edges(stars, ghost_stars):
                 if pair not in seen:
                     seen.add(pair)
                     active_edges.append([i, j])
-
+ 
     print(f"  → {len(active_edges)} active · {len(ghost_edges)} ghost edges")
     return active_edges, ghost_edges
-
+ 
 # ── Archive ───────────────────────────────────────────────────────────────────
-
+ 
 def next_issue(path):
     if not os.path.exists(path): return 1
     with open(path) as f: return len(json.load(f)) + 1
-
+ 
 def save_archive(path, data):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     issues = []
@@ -388,23 +388,23 @@ def save_archive(path, data):
         "generated": data["generated"],
     })
     with open(path, "w") as f: json.dump(issues, f, indent=2)
-
+ 
 # ── Main ──────────────────────────────────────────────────────────────────────
-
+ 
 def main():
     today    = datetime.date.today()
     week_str = today.strftime("Week of %B %-d, %Y")
     print(f"\nNYC Pulse — {week_str}")
     print(f"Source: Google suggestions + related queries (fully dynamic)\n")
-
+ 
     active, ghost = build_stars()
     if not active and not ghost:
         print("Nothing to write — exiting")
         return
-
+ 
     active_edges, ghost_edges = build_edges(active, ghost)
     issue = next_issue(OUTPUT_ARCHIVE)
-
+ 
     output = {
         "issue":           issue,
         "week":            week_str,
@@ -416,12 +416,13 @@ def main():
         "edges":           active_edges,
         "ghost_edges":     ghost_edges,
     }
-
+ 
     os.makedirs(os.path.dirname(OUTPUT_DATA), exist_ok=True)
     with open(OUTPUT_DATA, "w") as f: json.dump(output, f, indent=2)
     print(f"\nWritten → {OUTPUT_DATA}")
     save_archive(OUTPUT_ARCHIVE, output)
     print(f"Done — {len(active)} active · {len(ghost)} ghost · {len(active_edges)} edges\n")
-
+ 
 if __name__ == "__main__":
     main()
+ 
