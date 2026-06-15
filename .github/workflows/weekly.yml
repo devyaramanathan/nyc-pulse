@@ -1,38 +1,49 @@
-
 name: Daily NYC Pulse update
- 
+
 on:
   schedule:
     # Every day at 6:00 AM EST (11:00 UTC)
     - cron: "0 11 * * *"
   workflow_dispatch:  # manual trigger from GitHub UI anytime
- 
+
+permissions:
+  contents: write
+
 jobs:
   fetch-and-deploy:
     runs-on: ubuntu-latest
- 
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
- 
+        with:
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
- 
+
       - name: Install dependencies
         run: pip install -r requirements.txt
- 
+
+      - name: Debug checkout
+        run: |
+          echo "HEAD SHA: $(git rev-parse HEAD)"
+          echo "fetch_trends version: $(head -3 scripts/fetch_trends.py)"
+          grep "keywords\[:" scripts/fetch_trends.py
+
       - name: Fetch NYC trends
         run: python scripts/fetch_trends.py
- 
+
       - name: Commit updated data
         run: |
           git config user.name  "NYC Pulse Bot"
           git config user.email "bot@nycpulse.com"
+          git fetch origin main
+          git reset --soft origin/main
           git add public/data.json public/archive/issues.json
           git diff --staged --quiet || git commit -m "Daily update: $(date +'%B %d, %Y')"
-          git push --force
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
- 
