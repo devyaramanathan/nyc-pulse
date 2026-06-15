@@ -1,5 +1,5 @@
 """
-NYC Pulse — fetch script v9
+NYC Pulse — fetch script v10
 Fully dynamic. Zero hardcoded keywords. Zero external feeds.
 
 Discovery pipeline:
@@ -77,12 +77,33 @@ def random_pos(margin=0.05):
         "y": round(random.uniform(margin, 1-margin), 3),
     }
 
+# ── Retry wrapper ─────────────────────────────────────────────────────────────
+
+def with_retry(fn, label="call", retries=3, base_delay=90):
+    """
+    Call fn(). On 429, wait with exponential backoff and retry.
+    On other exceptions, re-raise immediately.
+    Returns fn()'s return value, or None if all retries exhausted.
+    """
+    for attempt in range(retries + 1):
+        try:
+            return fn()
+        except Exception as e:
+            msg = str(e)
+            if "429" in msg:
+                if attempt < retries:
+                    wait = base_delay * (2 ** attempt) + random.uniform(0, 30)
+                    print(f"  429 on {label} (attempt {attempt+1}/{retries}) — sleeping {int(wait)}s...")
+                    time.sleep(wait)
+                else:
+                    print(f"  429 on {label} — all retries exhausted, skipping")
+                    return None
+            else:
+                raise
+
 # ── Step 1: Discover keywords via suggestions() ───────────────────────────────
 
 # Prefixes that surface what NYC is actually searching right now.
-# suggestions() returns Google autocomplete — whatever is trending
-# bubbles to the top of these lists automatically.
-# No topic bias, no hardcoded subjects — just what people are typing.
 PREFIXES = [
     # single letters — catches anything trending
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
@@ -97,13 +118,8 @@ PREFIXES = [
 ]
 
 def fetch_via_suggestions():
-    """
-    Uses Google autocomplete suggestions to discover what people
-    are searching right now — fully dynamic, zero hardcoding.
-    Trending topics naturally rise to the top of autocomplete.
-    """
     pytrends = TrendReq(hl="en-US", tz=300)
-    discovered = {}  # keyword → suggestion rank score
+    discovered = {}
 
     print(f"  Querying {len(PREFIXES)} prefixes via suggestions()...")
     for prefix in PREFIXES:
@@ -112,14 +128,12 @@ def fetch_via_suggestions():
             for rank, item in enumerate(results[:5]):
                 kw = item.get("title", "").strip().lower()
                 if kw and is_safe(kw) and len(kw) > 2:
-                    # Higher rank = lower index = more relevant
                     score = 5 - rank
                     discovered[kw] = discovered.get(kw, 0) + score
-            time.sleep(random.uniform(3, 6))  # be polite even on suggestions
-        except Exception as e:
-            pass  # silently skip failed prefixes
+            time.sleep(random.uniform(3, 6))
+        except Exception:
+            pass
 
-    # Sort by how often they appeared across prefixes
     ranked = sorted(discovered.items(), key=lambda x: x[1], reverse=True)
     keywords = [kw for kw, _ in ranked[:60]]
     print(f"  → {len(keywords)} keywords discovered via suggestions")
@@ -127,7 +141,6 @@ def fetch_via_suggestions():
 
 
 def fetch_from_yesterday():
-    """Fallback: reuse yesterday's keywords and rescore them."""
     try:
         with open(OUTPUT_DATA) as f:
             prev = json.load(f)
@@ -142,21 +155,20 @@ def fetch_from_yesterday():
 # ── Step 2: Expand via related_queries() ─────────────────────────────────────
 
 def expand_with_related(keywords, geo, timeframe):
-    """
-    For top discovered keywords, fetch what people also searched.
-    This finds NYC-specific variants and co-searched terms.
-    E.g. "knicks" → "knicks game tonight", "knicks score", "knicks tickets"
-    """
-    pytrends = TrendReq(hl="en-US", tz=300)
     seen = set(k.lower() for k in keywords)
     expanded = list(keywords)
 
     print(f"  Expanding top {min(len(keywords), 25)} via related_queries()...")
     for i in range(0, min(len(keywords), 25), 5):
         batch = keywords[i:i+5]
-        try:
-            pytrends.build_payload(batch, geo=geo, timeframe=timeframe)
-            rq = pytrends.related_queries()
+
+        def do_related(batch=batch):
+            pt = TrendReq(hl="en-US", tz=300)
+            pt.build_payload(batch, geo=geo, timeframe=timeframe)
+            return pt.related_queries()
+
+        rq = with_retry(do_related, label=f"related batch {i//5+1}")
+        if rq:
             for kw in batch:
                 for kind in ["top", "rising"]:
                     if kw in rq and rq[kw][kind] is not None:
@@ -165,8 +177,6 @@ def expand_with_related(keywords, geo, timeframe):
                             if term not in seen and is_safe(term):
                                 seen.add(term)
                                 expanded.append(term)
-        except Exception as e:
-            print(f"  Warning related — {e}")
         polite_sleep()
 
     print(f"  → {len(expanded)} total after expansion")
@@ -175,21 +185,22 @@ def expand_with_related(keywords, geo, timeframe):
 # ── Step 3: Score all keywords ────────────────────────────────────────────────
 
 def fetch_scores(keywords, geo, timeframe):
-    pytrends = TrendReq(hl="en-US", tz=300)
     scores = {}
     for i in range(0, len(keywords), 5):
         batch = keywords[i:i+5]
-        try:
-            pytrends.build_payload(batch, geo=geo, timeframe=timeframe)
-            df = pytrends.interest_over_time()
-            if df.empty:
-                for kw in batch: scores[kw] = 0
-            else:
-                for kw in batch:
-                    scores[kw] = int(df[kw].mean()) if kw in df.columns else 0
-        except Exception as e:
-            print(f"  Warning scores — {e}")
-            for kw in batch: scores[kw] = 0
+
+        def do_scores(batch=batch):
+            pt = TrendReq(hl="en-US", tz=300)
+            pt.build_payload(batch, geo=geo, timeframe=timeframe)
+            return pt.interest_over_time()
+
+        df = with_retry(do_scores, label=f"scores batch {i//5+1}")
+        if df is not None and not df.empty:
+            for kw in batch:
+                scores[kw] = int(df[kw].mean()) if kw in df.columns else 0
+        else:
+            for kw in batch:
+                scores[kw] = 0
         polite_sleep()
     return scores
 
@@ -197,16 +208,20 @@ def fetch_scores(keywords, geo, timeframe):
 
 def fetch_borough(keyword, timeframe):
     try:
-        pytrends = TrendReq(hl="en-US", tz=300)
-        pytrends.build_payload([keyword], geo=NYC_DMA, timeframe=timeframe)
-        df = pytrends.interest_by_region(resolution="CITY", inc_low_vol=True)
-        if df.empty: return None
+        def do_borough():
+            pt = TrendReq(hl="en-US", tz=300)
+            pt.build_payload([keyword], geo=NYC_DMA, timeframe=timeframe)
+            return pt.interest_by_region(resolution="CITY", inc_low_vol=True)
+
+        df = with_retry(do_borough, label=f"borough:{keyword}")
+        if df is None or df.empty:
+            return None
         top_city = df[keyword].idxmax()
         for key, borough in BOROUGH_MAP.items():
             if key.lower() in str(top_city).lower():
                 return borough
         return str(top_city).split(",")[0]
-    except:
+    except Exception:
         return None
     finally:
         polite_sleep()
@@ -290,24 +305,28 @@ def build_edges(stars, ghost_stars):
             if len(word) > 4:
                 word_to_idx.setdefault(word, i)
 
-    pytrends = TrendReq(hl="en-US", tz=300)
     related_map = {}
     all_kws = [s["word"] for s in all_stars]
 
     for i in range(0, len(all_kws), 5):
         batch = all_kws[i:i+5]
-        try:
-            pytrends.build_payload(batch, geo=NYC_GEO, timeframe=TIMEFRAME_NOW)
-            data = pytrends.related_queries()
+
+        def do_edges(batch=batch):
+            pt = TrendReq(hl="en-US", tz=300)
+            pt.build_payload(batch, geo=NYC_GEO, timeframe=TIMEFRAME_NOW)
+            return pt.related_queries()
+
+        data = with_retry(do_edges, label=f"edges batch {i//5+1}")
+        if data:
             for kw in batch:
                 queries = []
                 for kind in ["top", "rising"]:
                     if kw in data and data[kw][kind] is not None:
                         queries += list(data[kw][kind]["query"].str.lower())
                 related_map[kw] = [q for q in queries if is_safe(q)]
-        except Exception as e:
-            print(f"  Warning edges — {e}")
-            for kw in batch: related_map[kw] = []
+        else:
+            for kw in batch:
+                related_map[kw] = []
         polite_sleep()
 
     active_edges, ghost_edges = [], []
