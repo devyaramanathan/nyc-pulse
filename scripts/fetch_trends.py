@@ -69,7 +69,7 @@ def velocity_to_tier(v):
     return "fading"
 
 def polite_sleep():
-    time.sleep(random.uniform(12, 18))
+    time.sleep(random.uniform(25, 40))
 
 def random_pos(margin=0.05):
     return {
@@ -115,7 +115,7 @@ def fetch_via_suggestions():
                     # Higher rank = lower index = more relevant
                     score = 5 - rank
                     discovered[kw] = discovered.get(kw, 0) + score
-            time.sleep(random.uniform(1.5, 3))  # be polite even on suggestions
+            time.sleep(random.uniform(3, 6))  # be polite even on suggestions
         except Exception as e:
             pass  # silently skip failed prefixes
 
@@ -231,7 +231,7 @@ def build_stars():
     keywords = expand_with_related(keywords, NYC_GEO, TIMEFRAME_NOW)
 
     # Cap before scoring — fewer batches = fewer 429s
-    keywords = keywords[:80]
+    keywords = keywords[:50]
     print(f"\n  Step 3: Scoring {len(keywords)} keywords against NY state...")
     scores_now  = fetch_scores(keywords, NYC_GEO, TIMEFRAME_NOW)
     scores_prev = fetch_scores(keywords, NYC_GEO, TIMEFRAME_PREV)
@@ -255,7 +255,7 @@ def build_stars():
             "y":        pos["y"],
         }
 
-        if now >= 30:
+        if now >= 8:
             active.append(entry)
         else:
             entry["tier"]  = "ghost"
