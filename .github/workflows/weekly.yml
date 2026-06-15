@@ -32,8 +32,7 @@ jobs:
           git config user.email "bot@nycpulse.com"
           git add public/data.json public/archive/issues.json
           git diff --staged --quiet || git commit -m "Daily update: $(date +'%B %d, %Y')"
-          git pull --rebase origin main
-          git push
+          git push --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
