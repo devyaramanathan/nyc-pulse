@@ -1,8 +1,8 @@
 {
-  "issue": 76,
-  "week": "Week of September 9, 2026",
+  "issue": 77,
+  "week": "Week of September 10, 2026",
   "geo": "New York City",
-  "generated": "2026-09-09",
+  "generated": "2026-09-10",
   "velocity_colors": {
     "rocketing": "#FF2D78",
     "surging": "#9B5DE5",
@@ -11,7 +11,28 @@
     "fading": "#4A4A6A",
     "ghost": "#2A2A3A"
   },
-  "stars": [],
+  "stars": [
+    {
+      "word": "apple",
+      "score": 32,
+      "velocity": 1.39,
+      "tier": "surging",
+      "color": "#9B5DE5",
+      "borough": "Accord",
+      "x": 0.486,
+      "y": 0.789
+    },
+    {
+      "word": "coffee",
+      "score": 9,
+      "velocity": 0.69,
+      "tier": "slowing",
+      "color": "#06D6A0",
+      "borough": "Brick",
+      "x": 0.917,
+      "y": 0.915
+    }
+  ],
   "ghost": [
     {
       "word": "translation",
@@ -20,9 +41,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.414,
-      "y": 0.221,
-      "sz": 4.9
+      "x": 0.381,
+      "y": 0.68,
+      "sz": 5.2
     },
     {
       "word": "theo of golden",
@@ -31,8 +52,8 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.526,
-      "y": 0.123,
+      "x": 0.722,
+      "y": 0.369,
       "sz": 4.5
     },
     {
@@ -42,20 +63,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.25,
-      "y": 0.116,
-      "sz": 4.2
-    },
-    {
-      "word": "map",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.897,
-      "y": 0.4,
-      "sz": 4.7
+      "x": 0.666,
+      "y": 0.511,
+      "sz": 5.0
     },
     {
       "word": "manhattan",
@@ -64,31 +74,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.292,
-      "y": 0.318,
-      "sz": 4.9
-    },
-    {
-      "word": "new york",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.515,
-      "y": 0.613,
-      "sz": 4.6
-    },
-    {
-      "word": "golden state warriors",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.602,
-      "y": 0.571,
-      "sz": 5.7
+      "x": 0.559,
+      "y": 0.711,
+      "sz": 4.1
     },
     {
       "word": "new york mets",
@@ -97,162 +85,41 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.724,
-      "y": 0.269,
-      "sz": 6.0
-    },
-    {
-      "word": "emily wilde's encyclopaedia of faeries",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.293,
-      "y": 0.095,
-      "sz": 4.0
-    },
-    {
-      "word": "murdle: volume 1 (murdle, 1)",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.763,
-      "y": 0.414,
-      "sz": 4.7
-    },
-    {
-      "word": "amazon",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.214,
-      "y": 0.632,
-      "sz": 5.5
-    },
-    {
-      "word": "fc barcelona",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.643,
-      "y": 0.362,
-      "sz": 4.2
-    },
-    {
-      "word": "calculator",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.683,
-      "y": 0.756,
+      "x": 0.56,
+      "y": 0.162,
       "sz": 4.6
     },
     {
-      "word": "vitamin d",
+      "word": "new york",
       "score": 0,
       "velocity": 0.0,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.281,
-      "y": 0.304,
-      "sz": 5.8
-    },
-    {
-      "word": "exercise",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.121,
-      "y": 0.279,
-      "sz": 5.1
-    },
-    {
-      "word": "film",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.844,
-      "y": 0.385,
+      "x": 0.28,
+      "y": 0.768,
       "sz": 5.4
     },
     {
-      "word": "gold",
+      "word": "los angeles dodgers",
       "score": 0,
       "velocity": 0.0,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.44,
-      "y": 0.646,
-      "sz": 5.6
+      "x": 0.364,
+      "y": 0.147,
+      "sz": 4.9
     },
     {
-      "word": "hospital",
+      "word": "golden state warriors",
       "score": 0,
       "velocity": 0.0,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.712,
-      "y": 0.294,
-      "sz": 5.7
-    },
-    {
-      "word": "instagram",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.558,
-      "y": 0.608,
-      "sz": 4.6
-    },
-    {
-      "word": "juventus fc",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.264,
+      "x": 0.603,
       "y": 0.762,
-      "sz": 4.8
-    },
-    {
-      "word": "liverpool f.c.",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.89,
-      "y": 0.802,
-      "sz": 5.1
-    },
-    {
-      "word": "nike",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.433,
-      "y": 0.232,
       "sz": 4.8
     },
     {
@@ -262,20 +129,174 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.848,
-      "y": 0.521,
-      "sz": 5.1
+      "x": 0.672,
+      "y": 0.433,
+      "sz": 5.5
     },
     {
-      "word": "openai",
+      "word": "when the moon hatched: a novel",
       "score": 0,
       "velocity": 0.0,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.075,
-      "y": 0.477,
+      "x": 0.456,
+      "y": 0.644,
+      "sz": 5.4
+    },
+    {
+      "word": "emily wilde's encyclopaedia of faeries",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.634,
+      "y": 0.279,
+      "sz": 5.2
+    },
+    {
+      "word": "murdle: volume 1 (murdle, 1)",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.17,
+      "y": 0.331,
+      "sz": 5.0
+    },
+    {
+      "word": "haunting adeline",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.552,
+      "y": 0.768,
+      "sz": 5.5
+    },
+    {
+      "word": "amazon",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.707,
+      "y": 0.605,
+      "sz": 5.9
+    },
+    {
+      "word": "fc barcelona",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.171,
+      "y": 0.474,
       "sz": 4.9
+    },
+    {
+      "word": "calculator",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.917,
+      "y": 0.453,
+      "sz": 4.2
+    },
+    {
+      "word": "vitamin d",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.748,
+      "y": 0.713,
+      "sz": 4.7
+    },
+    {
+      "word": "exercise",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.948,
+      "y": 0.591,
+      "sz": 4.0
+    },
+    {
+      "word": "film",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.627,
+      "y": 0.348,
+      "sz": 5.7
+    },
+    {
+      "word": "gold",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.207,
+      "y": 0.854,
+      "sz": 4.8
+    },
+    {
+      "word": "hospital",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.514,
+      "y": 0.717,
+      "sz": 5.0
+    },
+    {
+      "word": "juventus fc",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.727,
+      "y": 0.926,
+      "sz": 4.8
+    },
+    {
+      "word": "lacoste",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.337,
+      "y": 0.714,
+      "sz": 5.5
+    },
+    {
+      "word": "nike",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.212,
+      "y": 0.598,
+      "sz": 5.2
     },
     {
       "word": "probiotic",
@@ -284,9 +305,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.836,
-      "y": 0.204,
-      "sz": 5.5
+      "x": 0.802,
+      "y": 0.444,
+      "sz": 5.2
     },
     {
       "word": "queen",
@@ -295,9 +316,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.521,
-      "y": 0.095,
-      "sz": 5.2
+      "x": 0.379,
+      "y": 0.435,
+      "sz": 4.4
     },
     {
       "word": "reddit",
@@ -306,20 +327,20 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.85,
-      "y": 0.782,
-      "sz": 4.1
+      "x": 0.226,
+      "y": 0.751,
+      "sz": 5.8
     },
     {
-      "word": "soccer",
+      "word": "san antonio spurs",
       "score": 0,
       "velocity": 0.0,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.254,
-      "y": 0.146,
-      "sz": 4.6
+      "x": 0.399,
+      "y": 0.466,
+      "sz": 4.5
     },
     {
       "word": "thesaurus",
@@ -328,9 +349,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.28,
-      "y": 0.08,
-      "sz": 5.1
+      "x": 0.437,
+      "y": 0.874,
+      "sz": 5.3
     },
     {
       "word": "united states men's national soccer team",
@@ -339,9 +360,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.793,
-      "y": 0.526,
-      "sz": 5.1
+      "x": 0.382,
+      "y": 0.758,
+      "sz": 4.9
     },
     {
       "word": "video",
@@ -350,9 +371,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.809,
-      "y": 0.895,
-      "sz": 4.7
+      "x": 0.237,
+      "y": 0.567,
+      "sz": 4.4
     },
     {
       "word": "washing machine",
@@ -361,20 +382,20 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.159,
-      "y": 0.426,
-      "sz": 5.0
+      "x": 0.117,
+      "y": 0.214,
+      "sz": 4.4
     },
     {
-      "word": "yoga",
+      "word": "youtube",
       "score": 0,
       "velocity": 0.0,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.209,
-      "y": 0.063,
-      "sz": 4.9
+      "x": 0.703,
+      "y": 0.264,
+      "sz": 5.6
     },
     {
       "word": "zippo",
@@ -383,9 +404,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.629,
-      "y": 0.718,
-      "sz": 5.0
+      "x": 0.841,
+      "y": 0.932,
+      "sz": 5.4
     },
     {
       "word": "new york city fc",
@@ -394,9 +415,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.233,
-      "y": 0.424,
-      "sz": 5.0
+      "x": 0.683,
+      "y": 0.632,
+      "sz": 4.9
     },
     {
       "word": "the billionaire's intern",
@@ -405,9 +426,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.067,
-      "y": 0.773,
-      "sz": 5.4
+      "x": 0.105,
+      "y": 0.714,
+      "sz": 4.0
     },
     {
       "word": "how to change your mind",
@@ -416,9 +437,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.823,
-      "y": 0.897,
-      "sz": 4.5
+      "x": 0.068,
+      "y": 0.112,
+      "sz": 4.8
     },
     {
       "word": "search engine optimization",
@@ -427,20 +448,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.137,
-      "y": 0.335,
-      "sz": 4.1
-    },
-    {
-      "word": "who is america?",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.454,
-      "y": 0.779,
-      "sz": 5.9
+      "x": 0.426,
+      "y": 0.887,
+      "sz": 4.5
     },
     {
       "word": "brooklyn nets",
@@ -449,9 +459,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.27,
-      "y": 0.28,
-      "sz": 5.9
+      "x": 0.309,
+      "y": 0.855,
+      "sz": 4.1
     },
     {
       "word": "brooklyn",
@@ -460,9 +470,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.784,
-      "y": 0.697,
-      "sz": 5.1
+      "x": 0.676,
+      "y": 0.222,
+      "sz": 4.7
     },
     {
       "word": "the king of queens",
@@ -471,9 +481,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.062,
-      "y": 0.572,
-      "sz": 5.3
+      "x": 0.586,
+      "y": 0.759,
+      "sz": 4.5
     },
     {
       "word": "bronxshoes",
@@ -482,9 +492,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.322,
-      "y": 0.826,
-      "sz": 5.6
+      "x": 0.772,
+      "y": 0.92,
+      "sz": 4.2
     },
     {
       "word": "personal trainer near me",
@@ -493,8 +503,8 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.584,
-      "y": 0.88,
+      "x": 0.507,
+      "y": 0.639,
       "sz": 5.8
     },
     {
@@ -504,9 +514,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.799,
-      "y": 0.857,
-      "sz": 5.1
+      "x": 0.931,
+      "y": 0.139,
+      "sz": 4.0
     },
     {
       "word": "the tonight show starring jimmy fallon",
@@ -515,20 +525,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.088,
-      "y": 0.781,
-      "sz": 5.1
-    },
-    {
-      "word": "apple",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.281,
-      "y": 0.757,
-      "sz": 5.6
+      "x": 0.309,
+      "y": 0.838,
+      "sz": 4.4
     },
     {
       "word": "toronto blue jays",
@@ -537,68 +536,67 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.327,
-      "y": 0.472,
-      "sz": 4.4
+      "x": 0.434,
+      "y": 0.805,
+      "sz": 5.8
     },
     {
-      "word": "coffee",
+      "word": "english language",
       "score": 0,
       "velocity": 0.0,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.762,
-      "y": 0.058,
-      "sz": 5.1
+      "x": 0.571,
+      "y": 0.604,
+      "sz": 5.4
     },
     {
-      "word": "dictionary",
-      "score": 0,
-      "velocity": 0.0,
+      "word": "fishing",
+      "score": 1,
+      "velocity": 0.5,
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.842,
-      "y": 0.505,
-      "sz": 5.1
+      "x": 0.615,
+      "y": 0.733,
+      "sz": 4.8
     }
   ],
-  "edges": [],
+  "edges": [
+    [
+      0,
+      1
+    ]
+  ],
   "ghost_edges": [
     {
-      "a": 2,
-      "b": 5,
-      "a_ghost": true,
+      "a": 1,
+      "b": 33,
+      "a_ghost": false,
       "b_ghost": true
     },
     {
       "a": 2,
-      "b": 22,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 2,
-      "b": 7,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 3,
-      "b": 29,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 3,
-      "b": 5,
+      "b": 48,
       "a_ghost": true,
       "b_ghost": true
     },
     {
       "a": 4,
-      "b": 40,
+      "b": 7,
+      "a_ghost": true,
+      "b_ghost": true
+    },
+    {
+      "a": 4,
+      "b": 6,
+      "a_ghost": true,
+      "b_ghost": true
+    },
+    {
+      "a": 5,
+      "b": 42,
       "a_ghost": true,
       "b_ghost": true
     },
@@ -609,68 +607,44 @@
       "b_ghost": true
     },
     {
-      "a": 5,
-      "b": 22,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
       "a": 6,
-      "b": 1,
+      "b": 7,
       "a_ghost": true,
       "b_ghost": true
     },
     {
       "a": 7,
-      "b": 22,
+      "b": 10,
       "a_ghost": true,
       "b_ghost": true
     },
     {
-      "a": 10,
-      "b": 6,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 11,
-      "b": 20,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 12,
+      "a": 7,
       "b": 36,
       "a_ghost": true,
       "b_ghost": true
     },
     {
+      "a": 10,
+      "b": 4,
+      "a_ghost": true,
+      "b_ghost": true
+    },
+    {
       "a": 15,
-      "b": 5,
+      "b": 9,
+      "a_ghost": true,
+      "b_ghost": true
+    },
+    {
+      "a": 16,
+      "b": 31,
       "a_ghost": true,
       "b_ghost": true
     },
     {
       "a": 17,
-      "b": 40,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 17,
-      "b": 5,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 26,
-      "b": 27,
-      "a_ghost": true,
-      "b_ghost": true
-    },
-    {
-      "a": 28,
-      "b": 49,
+      "b": 7,
       "a_ghost": true,
       "b_ghost": true
     }
