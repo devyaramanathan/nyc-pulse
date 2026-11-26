@@ -1,8 +1,8 @@
 {
-  "issue": 148,
-  "week": "Week of November 25, 2026",
+  "issue": 149,
+  "week": "Week of November 26, 2026",
   "geo": "New York City",
-  "generated": "2026-11-25",
+  "generated": "2026-11-26",
   "velocity_colors": {
     "rocketing": "#FF2D78",
     "surging": "#9B5DE5",
@@ -20,8 +20,8 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.519,
-      "y": 0.82,
+      "x": 0.523,
+      "y": 0.423,
       "sz": 5.5
     },
     {
@@ -31,9 +31,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.278,
-      "y": 0.39,
-      "sz": 4.3
+      "x": 0.227,
+      "y": 0.356,
+      "sz": 4.1
     },
     {
       "word": "how to bbq right",
@@ -42,9 +42,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.664,
-      "y": 0.371,
-      "sz": 6.0
+      "x": 0.276,
+      "y": 0.909,
+      "sz": 5.5
     },
     {
       "word": "search engine optimization",
@@ -53,9 +53,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.321,
-      "y": 0.336,
-      "sz": 4.2
+      "x": 0.453,
+      "y": 0.373,
+      "sz": 5.9
     },
     {
       "word": "theo of golden",
@@ -64,9 +64,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.333,
-      "y": 0.186,
-      "sz": 4.8
+      "x": 0.722,
+      "y": 0.78,
+      "sz": 4.5
     },
     {
       "word": "the housemaid's secret",
@@ -75,9 +75,20 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.144,
-      "y": 0.19,
-      "sz": 4.8
+      "x": 0.636,
+      "y": 0.666,
+      "sz": 5.5
+    },
+    {
+      "word": "the king of queens",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.232,
+      "y": 0.746,
+      "sz": 5.3
     },
     {
       "word": "bronxshoes",
@@ -86,9 +97,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.27,
-      "y": 0.79,
-      "sz": 4.6
+      "x": 0.838,
+      "y": 0.52,
+      "sz": 5.8
     },
     {
       "word": "personal trainer near me",
@@ -97,9 +108,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.675,
-      "y": 0.916,
-      "sz": 4.9
+      "x": 0.869,
+      "y": 0.158,
+      "sz": 4.3
     },
     {
       "word": "craving the wrong brother: the one savage touch duet",
@@ -108,9 +119,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.821,
-      "y": 0.423,
-      "sz": 4.8
+      "x": 0.553,
+      "y": 0.834,
+      "sz": 6.0
     },
     {
       "word": "thursday night football tonight",
@@ -119,9 +130,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.853,
-      "y": 0.718,
-      "sz": 5.0
+      "x": 0.391,
+      "y": 0.752,
+      "sz": 4.9
     },
     {
       "word": "new york",
@@ -130,9 +141,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.221,
-      "y": 0.068,
-      "sz": 5.2
+      "x": 0.759,
+      "y": 0.415,
+      "sz": 5.5
     },
     {
       "word": "the billionaire's intern",
@@ -141,9 +152,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.77,
-      "y": 0.385,
-      "sz": 5.1
+      "x": 0.646,
+      "y": 0.384,
+      "sz": 4.6
     },
     {
       "word": "how-to geek",
@@ -152,9 +163,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.832,
-      "y": 0.541,
-      "sz": 5.1
+      "x": 0.731,
+      "y": 0.182,
+      "sz": 5.2
     },
     {
       "word": "emily wilde's encyclopaedia of faeries",
@@ -163,9 +174,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.668,
-      "y": 0.607,
-      "sz": 5.3
+      "x": 0.118,
+      "y": 0.888,
+      "sz": 4.6
     },
     {
       "word": "julie smith",
@@ -174,9 +185,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.813,
-      "y": 0.088,
-      "sz": 4.4
+      "x": 0.629,
+      "y": 0.33,
+      "sz": 5.6
     },
     {
       "word": "chase bank",
@@ -185,9 +196,20 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.668,
-      "y": 0.668,
-      "sz": 4.9
+      "x": 0.307,
+      "y": 0.289,
+      "sz": 4.7
+    },
+    {
+      "word": "queens of the stone age",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.355,
+      "y": 0.766,
+      "sz": 4.6
     },
     {
       "word": "a bronx tale",
@@ -196,9 +218,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.487,
-      "y": 0.243,
-      "sz": 5.0
+      "x": 0.852,
+      "y": 0.736,
+      "sz": 5.1
     },
     {
       "word": "tow truck near me",
@@ -207,9 +229,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.183,
-      "y": 0.551,
-      "sz": 4.3
+      "x": 0.058,
+      "y": 0.663,
+      "sz": 5.5
     },
     {
       "word": "the troop",
@@ -218,9 +240,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.464,
-      "y": 0.154,
-      "sz": 4.8
+      "x": 0.269,
+      "y": 0.927,
+      "sz": 6.0
     },
     {
       "word": "the tonight show starring jimmy fallon",
@@ -229,9 +251,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.174,
-      "y": 0.923,
-      "sz": 5.8
+      "x": 0.078,
+      "y": 0.408,
+      "sz": 4.5
     },
     {
       "word": "corridor nyc",
@@ -240,9 +262,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.26,
-      "y": 0.137,
-      "sz": 4.1
+      "x": 0.732,
+      "y": 0.69,
+      "sz": 4.9
     },
     {
       "word": "magnolia wu unfolds it all",
@@ -251,9 +273,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.119,
-      "y": 0.417,
-      "sz": 5.3
+      "x": 0.48,
+      "y": 0.643,
+      "sz": 4.1
     },
     {
       "word": "how-to",
@@ -262,9 +284,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.338,
-      "y": 0.098,
-      "sz": 5.0
+      "x": 0.867,
+      "y": 0.452,
+      "sz": 4.2
     },
     {
       "word": "mad mabel",
@@ -273,9 +295,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.685,
-      "y": 0.39,
-      "sz": 4.3
+      "x": 0.127,
+      "y": 0.377,
+      "sz": 4.4
     },
     {
       "word": "unreasonable hospitality: the remarkable power of giving people more than they expect",
@@ -284,9 +306,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.712,
-      "y": 0.643,
-      "sz": 5.9
+      "x": 0.268,
+      "y": 0.636,
+      "sz": 4.9
     },
     {
       "word": "manhattan",
@@ -295,9 +317,20 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.365,
-      "y": 0.319,
-      "sz": 4.9
+      "x": 0.889,
+      "y": 0.636,
+      "sz": 4.7
+    },
+    {
+      "word": "cookie queens",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.525,
+      "y": 0.489,
+      "sz": 5.5
     },
     {
       "word": "bronchitis",
@@ -306,9 +339,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.701,
-      "y": 0.247,
-      "sz": 4.5
+      "x": 0.245,
+      "y": 0.684,
+      "sz": 4.4
     },
     {
       "word": "earthquakes near me",
@@ -317,9 +350,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.331,
-      "y": 0.382,
-      "sz": 5.7
+      "x": 0.573,
+      "y": 0.188,
+      "sz": 5.2
     },
     {
       "word": "our perfect storm",
@@ -328,9 +361,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.467,
-      "y": 0.734,
-      "sz": 4.9
+      "x": 0.256,
+      "y": 0.103,
+      "sz": 5.9
     },
     {
       "word": "patrick christys",
@@ -339,9 +372,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.48,
-      "y": 0.159,
-      "sz": 4.4
+      "x": 0.234,
+      "y": 0.093,
+      "sz": 5.0
     },
     {
       "word": "keychain",
@@ -350,9 +383,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.817,
-      "y": 0.889,
-      "sz": 4.2
+      "x": 0.835,
+      "y": 0.376,
+      "sz": 5.2
     },
     {
       "word": "exit lane: an 831 stories romance",
@@ -361,9 +394,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.184,
-      "y": 0.752,
-      "sz": 5.3
+      "x": 0.681,
+      "y": 0.327,
+      "sz": 5.2
     },
     {
       "word": "how to lose a guy in 10 days",
@@ -372,9 +405,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.12,
-      "y": 0.255,
-      "sz": 5.3
+      "x": 0.748,
+      "y": 0.451,
+      "sz": 5.0
     },
     {
       "word": "jim curtis",
@@ -383,9 +416,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.371,
-      "y": 0.874,
-      "sz": 5.0
+      "x": 0.866,
+      "y": 0.588,
+      "sz": 5.1
     },
     {
       "word": "family money",
@@ -394,9 +427,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.252,
-      "y": 0.542,
-      "sz": 4.4
+      "x": 0.583,
+      "y": 0.447,
+      "sz": 4.3
     },
     {
       "word": "thor",
@@ -405,9 +438,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.616,
-      "y": 0.54,
-      "sz": 5.1
+      "x": 0.76,
+      "y": 0.337,
+      "sz": 5.0
     },
     {
       "word": "bronx and banco",
@@ -416,8 +449,8 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.477,
-      "y": 0.151,
+      "x": 0.231,
+      "y": 0.258,
       "sz": 6.0
     },
     {
@@ -427,9 +460,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.121,
-      "y": 0.209,
-      "sz": 4.8
+      "x": 0.554,
+      "y": 0.33,
+      "sz": 4.4
     },
     {
       "word": "musafir cafe: an unusual love story",
@@ -438,8 +471,8 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.878,
-      "y": 0.089,
+      "x": 0.641,
+      "y": 0.696,
       "sz": 5.1
     },
     {
@@ -449,9 +482,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.63,
-      "y": 0.947,
-      "sz": 5.6
+      "x": 0.673,
+      "y": 0.53,
+      "sz": 5.4
     },
     {
       "word": "performance indicator",
@@ -460,9 +493,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.329,
-      "y": 0.872,
-      "sz": 5.5
+      "x": 0.672,
+      "y": 0.448,
+      "sz": 4.9
     },
     {
       "word": "shell scripting tutorial",
@@ -471,9 +504,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.146,
-      "y": 0.239,
-      "sz": 5.2
+      "x": 0.433,
+      "y": 0.338,
+      "sz": 4.2
     },
     {
       "word": "how to read a poem: and fall in love with poetry",
@@ -482,9 +515,20 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.781,
-      "y": 0.735,
-      "sz": 5.6
+      "x": 0.586,
+      "y": 0.101,
+      "sz": 5.9
+    },
+    {
+      "word": "god save queens",
+      "score": 0,
+      "velocity": 0.0,
+      "tier": "ghost",
+      "color": "#2A2A3A",
+      "borough": null,
+      "x": 0.916,
+      "y": 0.71,
+      "sz": 4.3
     },
     {
       "word": "the bronx",
@@ -493,9 +537,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.827,
-      "y": 0.374,
-      "sz": 5.6
+      "x": 0.737,
+      "y": 0.113,
+      "sz": 4.4
     },
     {
       "word": "hebrew classes near me",
@@ -504,9 +548,9 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.846,
-      "y": 0.133,
-      "sz": 4.8
+      "x": 0.697,
+      "y": 0.299,
+      "sz": 5.6
     },
     {
       "word": "what to watch this weekend",
@@ -515,78 +559,46 @@
       "tier": "ghost",
       "color": "#2A2A3A",
       "borough": null,
-      "x": 0.869,
-      "y": 0.796,
-      "sz": 5.9
-    },
-    {
-      "word": "jason rantz",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.695,
-      "y": 0.11,
-      "sz": 4.7
-    },
-    {
-      "word": "search engine optimization strategies",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.309,
-      "y": 0.179,
-      "sz": 4.4
-    },
-    {
-      "word": "search engine optimization & marketing",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.279,
-      "y": 0.855,
-      "sz": 5.7
-    },
-    {
-      "word": "theo of golden reviews",
-      "score": 0,
-      "velocity": 0.0,
-      "tier": "ghost",
-      "color": "#2A2A3A",
-      "borough": null,
-      "x": 0.917,
-      "y": 0.94,
-      "sz": 4.8
+      "x": 0.592,
+      "y": 0.758,
+      "sz": 5.2
     }
   ],
   "edges": [],
   "ghost_edges": [
     {
-      "a": 3,
-      "b": 48,
+      "a": 11,
+      "b": 26,
       "a_ghost": true,
       "b_ghost": true
     },
     {
-      "a": 4,
-      "b": 49,
+      "a": 16,
+      "b": 11,
       "a_ghost": true,
       "b_ghost": true
     },
     {
-      "a": 10,
-      "b": 24,
+      "a": 16,
+      "b": 26,
       "a_ghost": true,
       "b_ghost": true
     },
     {
-      "a": 23,
-      "b": 49,
+      "a": 21,
+      "b": 10,
+      "a_ghost": true,
+      "b_ghost": true
+    },
+    {
+      "a": 27,
+      "b": 11,
+      "a_ghost": true,
+      "b_ghost": true
+    },
+    {
+      "a": 27,
+      "b": 26,
       "a_ghost": true,
       "b_ghost": true
     }
